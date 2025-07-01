@@ -31,8 +31,6 @@ jobs:
 
       - name: 🧰 Set up Android SDK
         uses: android-actions/setup-android@v3
-
-      - name: 🧾 Create local.properties
         
       - name: Setup local.properties
         run: |
