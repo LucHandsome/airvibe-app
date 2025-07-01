@@ -30,7 +30,10 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-
+!android/gradlew
+!android/gradlew.bat
+!android/gradle/wrapper/gradle-wrapper.properties
+!android/gradle/wrapper/gradle-wrapper.jar
 # Symbolication related
 app.*.symbols
 
