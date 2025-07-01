@@ -2,6 +2,6 @@ import 'package:flutter/foundation.dart' show immutable;
 
 @immutable
 class Constants {
-  static const String apiKey = '7ac000ad65981ddaf389a014e439b0b3';
-  static const String apiKey2 = '19d2fd7aab958bfe7f61000e1f5151cc';
+  static const String apiKey = '46a2d17e3e4d7f9d28c2b47900eb2dac';
+  static const String apiKey2 = '80fe55c9be0b67befc1fabf4a5bf2448';
 }

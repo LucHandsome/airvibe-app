@@ -1,4 +1,4 @@
-package com.example.weather_app_tutorial
+package com.example.AirVibe
 
 import io.flutter.embedding.android.FlutterActivity
 

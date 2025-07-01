@@ -101,15 +101,15 @@ class Main {
 
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
-      temp: json['temp'].toDouble(),
-      feelsLike: json['feels_like'].toDouble(),
-      tempMin: json['temp_min'].toDouble(),
-      tempMax: json['temp_max'].toDouble(),
+      temp: (json['temp'] as num).toDouble(),
+      feelsLike: (json['feels_like'] as num).toDouble(),
+      tempMin: (json['temp_min'] as num).toDouble(),
+      tempMax: (json['temp_max'] as num).toDouble(),
       pressure: json['pressure'],
       seaLevel: json['sea_level'],
       grndLevel: json['grnd_level'],
       humidity: json['humidity'],
-      tempKf: json['temp_kf'].toDouble(),
+      tempKf: (json['temp_kf'] as num).toDouble(),
     );
   }
 }
@@ -133,7 +133,7 @@ class Clouds {
 class Wind {
   final double speed;
   final int deg;
-  final double gust;
+  final double? gust;
 
   const Wind({
     required this.speed,
@@ -142,10 +142,11 @@ class Wind {
   });
 
   factory Wind.fromJson(Map<String, dynamic> json) {
+    final gustValue = json['gust'];
     return Wind(
-      speed: json['speed'].toDouble(),
+      speed: (json['speed'] as num).toDouble(),
       deg: json['deg'],
-      gust: json['gust'].toDouble(),
+      gust: gustValue is num ? gustValue.toDouble() : null,
     );
   }
 }
@@ -212,7 +213,8 @@ class Rain {
   });
 
   factory Rain.fromJson(Map<String, dynamic> json) {
-    return Rain(threeHours: json['3h'] ?? 0.0);
+    final dynamic value = json['3h'];
+    return Rain(threeHours: value is num ? value.toDouble() : 0.0);
   }
 }
 

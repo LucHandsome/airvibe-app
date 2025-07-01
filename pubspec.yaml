@@ -1,4 +1,4 @@
-name: weather_app_tutorial
+name: AirVibe
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -7,8 +7,16 @@ environment:
   sdk: '>=3.3.4 <4.0.0'
 
 dependencies:
+  dio: ^5.8.0+1
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.6.1
+  foundation: ^0.0.5
+  geolocator: ^14.0.1
+  jiffy: ^6.4.3
+  geocoding: ^2.1.0
+  lottie: ^3.3.1
+  icons_launcher: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -16,4 +24,8 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
-  uses-material-design: true
+  uses-material-design: true  
+  assets:
+    - assets/icons/
+    - assets/lottie/
+    - assets/images/

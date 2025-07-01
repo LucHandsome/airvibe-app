@@ -1,6 +1,6 @@
 {
-    "name": "weather_app_tutorial",
-    "short_name": "weather_app_tutorial",
+    "name": "AirVibe",
+    "short_name": "AirVibe",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

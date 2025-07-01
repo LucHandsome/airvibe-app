@@ -1,3 +1,3 @@
-# weather_app_tutorial
+# AirVibe
 
 A new Flutter project.
