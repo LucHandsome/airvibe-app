@@ -30,7 +30,7 @@ jobs:
         run: gem install fastlane
 
       - name: 🔧 Grant Gradlew Permission
-        run: chmod +x ./android/gradlew
+        run: chmod +x ./gradlew
 
       - name: 📥 Cache Gradle
         uses: actions/cache@v3
@@ -43,7 +43,6 @@ jobs:
             gradle-${{ runner.os }}-
 
       - name: 🚀 Run Fastlane (Build APK)
-        working-directory: android
         run: fastlane build_apk
 
       - name: 📤 Upload build artifact
