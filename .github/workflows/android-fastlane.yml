@@ -3,7 +3,7 @@ name: Android CI with Fastlane
 on:
   push:
     branches:
-      - main 
+      - main
   pull_request:
 
 jobs:
@@ -28,7 +28,11 @@ jobs:
 
       - name: 🏗️ Install Fastlane
         run: gem install fastlane
-      - name: Setup local.properties
+
+      - name: 🧰 Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 🧾 Create local.properties
         working-directory: android
         run: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
