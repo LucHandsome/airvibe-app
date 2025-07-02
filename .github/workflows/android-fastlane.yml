@@ -29,7 +29,6 @@ jobs:
       - name: Setup local.properties
         run: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > android/local.properties
-          echo "flutter.sdk=/opt/hostedtoolcache/flutter/stable-x64" >> android/local.properties
 
       - name: 📦 Set up Ruby
         uses: ruby/setup-ruby@v1

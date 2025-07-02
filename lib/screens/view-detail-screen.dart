@@ -43,7 +43,7 @@ class WeatherDetailScreen extends ConsumerWidget {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const CircularProgressIndicator();
                       } else if (snapshot.hasError || !snapshot.hasData) {
-                        return Text('Không xác định địa điểm',
+                        return const Text('Không xác định địa điểm',
                             style: TextStyles.h1);
                       } else {
                         return Text(
