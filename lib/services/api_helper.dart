@@ -1,11 +1,14 @@
+// lib/services/api_helper.dart - Updated version
+import 'package:AirVibe/models/health_activities.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show immutable;
-
 import '/constants/constants.dart';
+import '/models/air_pollution.dart';
 import '/models/hourly_weather.dart';
 import '/models/weather.dart';
 import '/models/weekly_weather.dart';
 import '/services/geolocator.dart';
+import '/utils/air_pollution_transformer.dart'; // Import transformer
 import '/utils/logging.dart';
 
 @immutable
@@ -13,7 +16,8 @@ class ApiHelper {
   static const baseUrl = 'https://api.openweathermap.org/data/2.5';
   static const weeklyWeatherUrl =
       'https://api.open-meteo.com/v1/forecast?current=&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto';
-
+  static const airPollutionBaseUrl = 'https://ca92582b6720.ngrok-free.app/api/v1/weather/air-pollution/current';
+  static const healthActivitiesBaseUrl = 'https://ca92582b6720.ngrok-free.app/api/v1/weather/health-activities';
   static double lat = 0.0;
   static double lon = 0.0;
   static final dio = Dio();
@@ -66,6 +70,46 @@ class ApiHelper {
         '$baseUrl/weather?lat=$lat&lon=$lon&units=metric&appid=${Constants.apiKey}&lang=vi';
     final response = await _fetchData(url);
     return Weather.fromJson(response);
+  }
+
+  // Air Pollution by current location - SỬ DỤNG TRANSFORMER
+  static Future<AirPollution> getCurrentAirPollution() async {
+    await fetchLocation();
+    final url = '$airPollutionBaseUrl/$lat/$lon';
+    final response = await _fetchData(url);
+    
+    // Transform backend response thành AirPollution model
+    return AirPollutionTransformer.fromBackendResponse(response);
+  }
+
+  // Air Pollution by lat & lon - SỬ DỤNG TRANSFORMER
+  static Future<AirPollution> getAirPollutionByLatLon({
+    required String lat,
+    required String lon,
+  }) async {
+    final url = '$airPollutionBaseUrl/$lat/$lon';
+    final response = await _fetchData(url);
+    
+    // Transform backend response thành AirPollution model
+    return AirPollutionTransformer.fromBackendResponse(response);
+  }
+
+ // Health Activities by current location
+  static Future<HealthActivities> getCurrentHealthActivities() async {
+    await fetchLocation();
+    final url = '$healthActivitiesBaseUrl/$lat/$lon';
+    final response = await _fetchData(url);
+    return HealthActivities.fromJson(response);
+  }
+
+  // Health Activities by lat & lon
+  static Future<HealthActivities> getHealthActivitiesByLatLon({
+    required String lat,
+    required String lon,
+  }) async {
+    final url = '$healthActivitiesBaseUrl/$lat/$lon';
+    final response = await _fetchData(url);
+    return HealthActivities.fromJson(response);
   }
 
   static String _constructWeatherUrl() =>

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:AirVibe/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
@@ -44,7 +45,7 @@ class WeeklyForecastView extends ConsumerWidget {
       },
       loading: () {
         return const Center(
-          child: CircularProgressIndicator()
+          child: LoadingWidget()
         );
       },
     );
@@ -77,7 +78,7 @@ class WeeklyWeatherTile extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
-        color: AppColors.accentBlue,
+        color: Color(0xFFADD8E6).withOpacity(0.1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

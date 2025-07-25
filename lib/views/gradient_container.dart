@@ -9,7 +9,6 @@ class GradientContainer extends StatelessWidget {
 
   final List<Widget> children;
 
-
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -17,26 +16,14 @@ class GradientContainer extends StatelessWidget {
       child: Container(
         width: screenSize.width,
         height: screenSize.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            // Updated colors to match ChatScreen's gradient
             colors: [
-              AppColors.black,
-              AppColors.secondaryBlack,
-              AppColors.secondaryBlack.withOpacity(.99),
-              AppColors.secondaryBlack.withOpacity(.98),
-              AppColors.secondaryBlack.withOpacity(.97),
-              AppColors.secondaryBlack.withOpacity(.96),  
-              AppColors.secondaryBlack.withOpacity(.95),
-              AppColors.secondaryBlack.withOpacity(.94),
-              AppColors.secondaryBlack.withOpacity(.93),
-              AppColors.secondaryBlack.withOpacity(.92),
-              AppColors.secondaryBlack.withOpacity(.91),
-              AppColors.secondaryBlack.withOpacity(.90),
-              AppColors.darkBlue,
-              AppColors.accentBlue,
-              AppColors.lightBlue,
+              Color(0xFF1E3A8A), // Blue-900 from ChatScreen
+              Color(0xFF3B82F6), // Blue-500 from ChatScreen
             ],
           ),
         ),

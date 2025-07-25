@@ -1,3 +1,4 @@
+import 'package:AirVibe/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:AirVibe/constants/app_colors.dart';
@@ -39,7 +40,7 @@ class HourlyForecastView extends ConsumerWidget {
       },
       loading: () {
         return const Center(
-          child: CircularProgressIndicator()
+          child: LoadingWidget()
         );
       },
     );
@@ -68,7 +69,7 @@ class HourlyForeCastTile extends StatelessWidget {
         bottom: 12,
       ),
       child: Material(
-        color: isActive ? AppColors.lightBlue : AppColors.accentBlue,
+        color: isActive ? AppColors.lightBlue : Color(0xFFADD8E6).withOpacity(0.1),
         borderRadius: BorderRadius.circular(15.0),
         elevation: isActive ? 8 : 0,
         child: Padding(

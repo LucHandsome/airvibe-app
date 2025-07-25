@@ -1,3 +1,4 @@
+import 'package:AirVibe/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:AirVibe/providers/get-weather-by-city-provider-weather.dart';
@@ -41,7 +42,7 @@ class WeatherDetailScreen extends ConsumerWidget {
                         double.parse(lat), double.parse(lon)),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
+                        return const LoadingWidget();
                       } else if (snapshot.hasError || !snapshot.hasData) {
                         return const Text('Không xác định địa điểm',
                             style: TextStyles.h1);
@@ -78,7 +79,7 @@ class WeatherDetailScreen extends ConsumerWidget {
         },
         error: (error, stackTrace) =>
             const Center(child: Text('An error has occurred')),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: LoadingWidget()),
       ),
     );
   }

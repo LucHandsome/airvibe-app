@@ -1,3 +1,4 @@
+// android/app/build.gradle
 plugins {
     id "com.android.application"
     id "org.jetbrains.kotlin.android"
@@ -23,6 +24,8 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+
+        coreLibraryDesugaringEnabled true // ✅ Di chuyển dòng này vào đây
     }
 
     kotlinOptions {
@@ -48,8 +51,11 @@ android {
     }
 }
 
+
 flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5' // Use the latest version
+}

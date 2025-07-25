@@ -1,3 +1,4 @@
+import 'package:AirVibe/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
@@ -9,6 +10,7 @@ import 'package:AirVibe/services/geocoding_service.dart';
 import 'package:AirVibe/views/gradient_container.dart';
 import 'package:AirVibe/views/hourly_forecast.dart';
 import 'package:AirVibe/views/weather_info.dart';
+import 'package:AirVibe/widgets/current_air_quality_card.dart';
 // import 'package:AirVibe/services/geolocator.dart';
 
 class WeatherScreen extends ConsumerWidget {
@@ -45,13 +47,13 @@ class WeatherScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 30),
                 SizedBox(
-                  height: 260,
+                  height: 200,
                   child:
-                      Image.asset(
-                          'assets/icons/${weather.weather[0].icon.replaceAll('n', 'd')}.png'),
-                      // Lottie.asset('assets/lottie/sunny.json'),
+                      // Image.asset(
+                      //     'assets/icons/${weather.weather[0].icon.replaceAll('n', 'd')}.png'),
+                      Lottie.asset('assets/lottie/${weather.weather[0].icon.replaceAll('n', 'd')}.json'),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 Text(
                   '${weather.weather[0].description[0].toUpperCase()}${weather.weather[0].description.substring(1)}',
                   style: TextStyles.h2,
@@ -63,8 +65,13 @@ class WeatherScreen extends ConsumerWidget {
               weather: weather,
             ),
 
-            const SizedBox(height: 40),
-
+            const SizedBox(height: 20),
+            
+            // Air Quality Card
+            const CurrentAirQualityCard(),
+            
+            const SizedBox(height: 20),
+            
             //!View Hourly Forecast
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,12 +81,12 @@ class WeatherScreen extends ConsumerWidget {
                   style: TextStyles.h2,
                 ),
                 TextButton(
-                    onPressed: () {}, child: const Text('View full forecast')),
+                    onPressed: () {}, child: const Text('View full forecast', style: TextStyles.subtitleText,)),
               ],
             ),
 
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
 
             const HourlyForecastView(),
@@ -93,7 +100,7 @@ class WeatherScreen extends ConsumerWidget {
       },
       loading: () {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: LoadingWidget(),
         );
       },
     );

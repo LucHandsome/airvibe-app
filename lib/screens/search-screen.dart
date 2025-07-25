@@ -81,7 +81,8 @@ class LocationIcon extends StatelessWidget {
       width: 55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: AppColors.accentBlue,
+        color: Color(0xFFADD8E6).withOpacity(0.2),
+        border: Border.all(color: Colors.white.withOpacity(0.5)),
       ),
       child: const Icon(
         Icons.location_on_outlined,
